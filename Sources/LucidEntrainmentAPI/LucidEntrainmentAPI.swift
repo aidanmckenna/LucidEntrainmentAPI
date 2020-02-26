@@ -34,12 +34,12 @@ class LucidCMSEntrainmentRepository: EntrainmentRepository
         return
     }
     
-    func getEntrainmentAsset(beatFrequency: Double, driverFrequency: Double, completion: @escaping (EntrainmentAsset?, Error?) -> Void) {
+    func getEntrainmentAsset(beatFrequency: String, driverFrequency: String, completion: @escaping (EntrainmentAsset?, Error?) -> Void) {
         
         var urlComponents = URLComponents(string: LucidCMSEntrainmentRepository.endpointBaseString)!
         urlComponents.queryItems = [
-            URLQueryItem(name: "ebf", value: String(beatFrequency)),
-            URLQueryItem(name: "edf", value: String(driverFrequency))
+            URLQueryItem(name: "ebf", value: beatFrequency),
+            URLQueryItem(name: "edf", value: driverFrequency)
         ]
         let request = URLRequest(url:urlComponents.url!)
         let task = URLSession.shared.dataTask(with:request){ data, response, error in
