@@ -1,7 +1,12 @@
 import Foundation
-struct LucidEntrainmentAPI {
+struct LucidEntrainmentAPI: EntrainmentRepositoryFactory {
+    func make() -> EntrainmentRepository {
+        return LucidCMSEntrainmentRepository()
+    }
+    
     var text = "Hello, World!"
     var url = URL(string:"")
+    
 }
 
 
