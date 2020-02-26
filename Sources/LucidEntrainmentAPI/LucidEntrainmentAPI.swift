@@ -1,6 +1,6 @@
 import Foundation
-public struct LucidEntrainmentAPI: EntrainmentRepositoryFactory {
-    func make() -> EntrainmentRepository {
+public struct EntrainmentAPI: EntrainmentRepositoryFactory {
+    public static func make() -> EntrainmentRepository {
         return LucidCMSEntrainmentRepository()
     }
 }
