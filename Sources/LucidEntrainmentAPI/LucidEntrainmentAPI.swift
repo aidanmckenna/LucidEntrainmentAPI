@@ -7,7 +7,7 @@ public struct EntrainmentAPI: EntrainmentRepositoryFactory {
 
 protocol EntrainmentRepositoryFactory
 {
-    func make()->EntrainmentRepository
+    public func make()->EntrainmentRepository
 }
 
 
