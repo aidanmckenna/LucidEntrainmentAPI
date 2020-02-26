@@ -1,21 +1,8 @@
 import Foundation
-struct LucidEntrainmentAPI: EntrainmentRepositoryFactory {
+public struct LucidEntrainmentAPI: EntrainmentRepositoryFactory {
     func make() -> EntrainmentRepository {
         return LucidCMSEntrainmentRepository()
     }
-    
-    var text = "Hello, World!"
-    var url = URL(string:"")
-    
-}
-
-
-struct EntrainmentAsset
-{
-    let id: String
-    let beatFrequency: Double
-    let driverFrequency: Double
-    let sourceUrl:URL
 }
 
 protocol EntrainmentRepositoryFactory
@@ -23,7 +10,17 @@ protocol EntrainmentRepositoryFactory
     func make()->EntrainmentRepository
 }
 
-protocol EntrainmentRepository
+
+public struct EntrainmentAsset
+{
+    let id: String
+    let beatFrequency: Double
+    let driverFrequency: Double
+    let sourceUrl:URL
+}
+
+
+public protocol EntrainmentRepository
 {
     func getEntrainmentAsset(beatFrequency: Double, driverFrequency: Double, completion: @escaping (EntrainmentAsset?, Error?)->Void)
     func createEntrainmentAsset(beatFrequency: Double, driverFrequency: Double, fileUrl: URL)
