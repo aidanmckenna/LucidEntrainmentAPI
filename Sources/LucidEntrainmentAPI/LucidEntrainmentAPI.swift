@@ -51,6 +51,11 @@ class LucidCMSEntrainmentRepository: EntrainmentRepository
                     return
             }
             let jsonData = try! JSONSerialization.jsonObject(with: data) as! NSDictionary
+            let asset = EntrainmentAsset(id: jsonData["id"] as! String,
+                                         beatFrequency: jsonData["beat_frequency"] as! Double,
+                                         driverFrequency: jsonData["driver_frequency"] as! Double,
+                                         sourceUrl: URL(string: jsonData["track"] as! String)
+            completion(asset, nil)
         }.resume()
     }
 }
