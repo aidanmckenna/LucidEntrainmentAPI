@@ -22,15 +22,15 @@ public struct EntrainmentAsset
 
 public protocol EntrainmentRepository
 {
-    func getEntrainmentAsset(beatFrequency: Double, driverFrequency: Double, completion: @escaping (EntrainmentAsset?, Error?)->Void)
-    func createEntrainmentAsset(beatFrequency: Double, driverFrequency: Double, fileUrl: URL)
+    func getEntrainmentAsset(beatFrequency: String, driverFrequency: String, completion: @escaping (EntrainmentAsset?, Error?)->Void)
+    func createEntrainmentAsset(beatFrequency: String, driverFrequency: String, fileUrl: URL)
 }
 
 class LucidCMSEntrainmentRepository: EntrainmentRepository
 {
     private static let endpointBaseString: String = "https://lucid-tracks-dot-lucid-cloud-application.appspot.com/v1/api/entrainment/"
     
-    func createEntrainmentAsset(beatFrequency: Double, driverFrequency: Double, fileUrl: URL) {
+    func createEntrainmentAsset(beatFrequency: String, driverFrequency: String, fileUrl: URL) {
         return
     }
     
