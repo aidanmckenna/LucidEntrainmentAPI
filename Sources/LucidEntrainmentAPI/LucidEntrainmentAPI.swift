@@ -54,7 +54,7 @@ class LucidCMSEntrainmentRepository: EntrainmentRepository
             let asset = EntrainmentAsset(id: jsonData["id"] as! String,
                                          beatFrequency: jsonData["beat_frequency"] as! Double,
                                          driverFrequency: jsonData["driver_frequency"] as! Double,
-                                         sourceUrl: URL(string: jsonData["track"] as! String)
+                                         sourceUrl: URL(string: jsonData["track"] as! String)!)
             completion(asset, nil)
         }.resume()
     }
