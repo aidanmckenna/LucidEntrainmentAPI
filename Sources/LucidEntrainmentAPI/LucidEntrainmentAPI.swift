@@ -43,6 +43,9 @@ class LucidCMSEntrainmentRepository: EntrainmentRepository
         ]
         let request = URLRequest(url:urlComponents.url!)
         let task = URLSession.shared.dataTask(with:request){ data, response, error in
+            print("data", data)
+            print("response", response)
+            print("error", error)
             guard let data = data,                            // is there data
                 let response = response as? HTTPURLResponse,  // is there HTTP response
                 (200 ..< 300) ~= response.statusCode,         // is statusCode 2XX
