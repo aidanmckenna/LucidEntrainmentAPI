@@ -1,15 +1,15 @@
 import Foundation
 public struct EntrainmentAPI: EntrainmentRepositoryFactory {
-    public static func make() -> EntrainmentRepository {
+    
+    public static func getRepo() -> EntrainmentRepository {
         return LucidCMSEntrainmentRepository()
     }
 }
 
-protocol EntrainmentRepositoryFactory
+public protocol EntrainmentRepositoryFactory
 {
-    public func make()->EntrainmentRepository
+    static func getRepo()->EntrainmentRepository
 }
-
 
 public struct EntrainmentAsset
 {
