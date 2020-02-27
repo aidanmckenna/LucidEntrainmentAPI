@@ -13,10 +13,10 @@ public protocol EntrainmentRepositoryFactory
 
 public struct EntrainmentAsset
 {
-    let id: String
-    let beatFrequency: Double
-    let driverFrequency: Double
-    let sourceUrl:URL
+    public let id: String
+    public let beatFrequency: Double
+    public let driverFrequency: Double
+    public let sourceUrl:URL
 }
 
 
@@ -47,7 +47,7 @@ class LucidCMSEntrainmentRepository: EntrainmentRepository
             print("response", response)
             print("error", error)
             guard let data = data,                            // is there data
-                let response = response as? HTTPURLResponse,  // is there HTTP response
+                let response = response as? NSHTTPURLResponse,  // is there HTTP response
                 (200 ..< 300) ~= response.statusCode,         // is statusCode 2XX
                 error == nil else {
                     completion(nil, error)
@@ -55,7 +55,7 @@ class LucidCMSEntrainmentRepository: EntrainmentRepository
             }
             let jsonData = try! JSONSerialization.jsonObject(with: data) as! NSDictionary
             print("JsonData", jsonData)
-            let asset = EntrainmentAsset(id: jsonData["id"] as! String,
+            let asset = EntrainmentAsset(id: jsonData["id"] as! NSNumber,
                                          beatFrequency: jsonData["beat_frequency"] as! Double,
                                          driverFrequency: jsonData["driver_frequency"] as! Double,
                                          sourceUrl: URL(string: jsonData["track"] as! String)!)
